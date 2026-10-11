@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — MedCare</title>
+
+    <!-- Основные стили существующего сайта MedCare -->
+    <link rel="stylesheet" href="Styles_ready.css">
+
+    <!-- Шрифты, используемые на основной странице -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================================
+           MEDCARE — PERSONAL ACCOUNT
+           Стили только для страницы личного кабинета.
+           ========================================================= */
+
+        .account-page {
+            min-height: 100vh;
+            background: #ECE7E2;
+            color: #2D3833;
+            font-family: "Manrope", sans-serif;
+        }
+
+        .account-header {
+            background: #4A7766;
+            min-height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            gap: 30px;
+        }
+
+        .account-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: #ECE7E2;
+            flex-shrink: 0;
+        }
+
+        .account-brand img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+        }
+
+        .account-brand-name {
+            font-family: "Source Serif Pro", serif;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        .account-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .account-nav a {
+            color: #ECE7E2;
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity .2s ease;
+        }
+
+        .account-nav a:hover {
+            opacity: .7;
+        }
+
+        .account-exit {
+            border: 1px solid rgba(236,231,226,.7);
+            border-radius: 30px;
+            padding: 11px 20px;
+            color: #ECE7E2;
+            text-decoration: none;
+            font-size: 14px;
+            transition: .2s ease;
+        }
+
+        .account-exit:hover {
+            background: #ECE7E2;
+            color: #4A7766;
+        }
+
+        .account-main {
+            width: min(1240px, 88%);
+            margin: 0 auto;
+            padding: 55px 0 80px;
+        }
+
+        .account-welcome {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 34px;
+        }
+
+        .account-kicker {
+            color: #EC644A;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .account-title {
+            margin: 0;
+            font-family: "Source Serif Pro", serif;
+            font-size: clamp(38px, 5vw, 60px);
+            line-height: 1;
+            font-weight: 600;
+            color: #315B4C;
+        }
+
+        .account-subtitle {
+            margin: 13px 0 0;
+            color: #66716C;
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 620px;
+        }
+
+        .account-status {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            background: rgba(74,119,102,.10);
+            border-radius: 30px;
+            padding: 11px 16px;
+            color: #4A7766;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .account-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4A7766;
+        }
+
+        .account-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 22px;
+            align-items: start;
+        }
+
+        .account-card {
+            background: #F7F3EF;
+            border-radius: 24px;
+            padding: 27px;
+            box-shadow: 0 7px 25px rgba(45,56,51,.06);
+        }
+
+        .account-card h2 {
+            margin: 0;
+            color: #315B4C;
+            font-family: "Source Serif Pro", serif;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .account-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .account-link {
+            color: #EC644A;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .profile-card {
+            grid-row: span 2;
+        }
+
+        .profile-top {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 26px;
+        }
+
+        .profile-avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: #4A7766;
+            color: #ECE7E2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Source Serif Pro", serif;
+            font-size: 30px;
+        }
+
+        .profile-name {
+            margin: 0 0 5px;
+            font-family: "Source Serif Pro", serif;
+            font-size: 25px;
+            color: #315B4C;
+        }
+
+        .profile-role {
+            color: #7B837F;
+            font-size: 13px;
+        }
+
+        .profile-data {
+            display: grid;
+            gap: 0;
+            border-top: 1px solid #E3DDD7;
+        }
+
+        .profile-row {
+            display: grid;
+            grid-template-columns: 145px 1fr;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #E3DDD7;
+        }
+
+        .profile-label {
+            color: #8A908C;
+            font-size: 12px;
+        }
+
+        .profile-value {
+            color: #34413B;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .edit-profile {
+            margin-top: 22px;
+            width: 100%;
+            border: 0;
+            background: #4A7766;
+            color: #fff;
+            border-radius: 13px;
+            padding: 13px 18px;
+            font: inherit;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .edit-profile:hover {
+            background: #315B4C;
+        }
+
+        .appointment-card {
+            background: #4A7766;
+            color: #ECE7E2;
+        }
+
+        .appointment-card h2 {
+            color: #ECE7E2;
+        }
+
+        .appointment-label {
+            color: rgba(236,231,226,.72);
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .appointment-doctor {
+            font-family: "Source Serif Pro", serif;
+            font-size: 27px;
+            margin: 0 0 5px;
+        }
+
+        .appointment-specialty {
+            font-size: 13px;
+            opacity: .8;
+            margin-bottom: 22px;
+        }
+
+        .appointment-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .appointment-info-item {
+            background: rgba(236,231,226,.10);
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        .appointment-info-item strong {
+            display: block;
+            font-size: 15px;
+            margin-top: 4px;
+        }
+
+        .appointment-button {
+            display: inline-block;
+            margin-top: 20px;
+            color: #4A7766;
+            background: #ECE7E2;
+            padding: 11px 18px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .disease-list,
+        .analysis-list,
+        .visits-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .disease-item,
+        .analysis-item,
+        .visit-item {
+            background: #EFEAE5;
+            border-radius: 15px;
+            padding: 15px 16px;
+        }
+
+        .disease-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .item-title {
+            color: #34413B;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .item-meta {
+            color: #858D88;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .disease-status {
+            color: #4A7766;
+            background: rgba(74,119,102,.10);
+            padding: 6px 9px;
+            border-radius: 20px;
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        .analysis-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .analysis-result {
+            text-align: right;
+        }
+
+        .analysis-result strong {
+            display: block;
+            color: #315B4C;
+            font-size: 15px;
+        }
+
+        .analysis-result span {
+            color: #858D88;
+            font-size: 10px;
+        }
+
+        .analysis-normal {
+            color: #4A7766 !important;
+        }
+
+        .visits-card {
+            margin-top: 22px;
+        }
+
+        .visit-item {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .visit-date {
+            color: #EC644A;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .visit-doctor {
+            color: #34413B;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .visit-type {
+            color: #858D88;
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .visit-arrow {
+            color: #4A7766;
+            font-size: 20px;
+        }
+
+        .reminders {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .reminder {
+            border-radius: 24px;
+            padding: 23px;
+            background: #F7F3EF;
+        }
+
+        .reminder.coral {
+            background: #EC644A;
+            color: white;
+        }
+
+        .reminder h3 {
+            margin: 0 0 8px;
+            font-family: "Source Serif Pro", serif;
+            font-size: 23px;
+        }
+
+        .reminder p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.55;
+            color: #707974;
+        }
+
+        .reminder.coral p {
+            color: rgba(255,255,255,.82);
+        }
+
+        .reminder-time {
+            margin-top: 16px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .account-footer {
+            text-align: center;
+            padding: 25px 20px 40px;
+            color: #8A908C;
+            font-size: 12px;
+        }
+
+        /* Модальное окно */
+        .account-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(38,49,44,.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .account-modal.active {
+            display: flex;
+        }
+
+        .account-modal-box {
+            width: min(480px, 100%);
+            background: #F7F3EF;
+            border-radius: 25px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .account-modal-box h2 {
+            margin: 0 0 20px;
+            font-family: "Source Serif Pro", serif;
+            color: #315B4C;
+            font-size: 29px;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 20px;
+            top: 18px;
+            border: 0;
+            background: none;
+            color: #4A7766;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .modal-field {
+            display: grid;
+            gap: 7px;
+            margin-bottom: 15px;
+        }
+
+        .modal-field label {
+            font-size: 12px;
+            color: #737C77;
+        }
+
+        .modal-field input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #D9D1CA;
+            background: #ECE7E2;
+            border-radius: 12px;
+            padding: 12px 13px;
+            font: inherit;
+            color: #34413B;
+            outline: none;
+        }
+
+        .modal-field input:focus {
+            border-color: #4A7766;
+        }
+
+        .modal-save {
+            width: 100%;
+            border: 0;
+            border-radius: 13px;
+            background: #4A7766;
+            color: white;
+            padding: 13px;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 7px;
+        }
+
+        /* Адаптив */
+        @media (max-width: 900px) {
+            .account-header {
+                padding: 0 5%;
+            }
+
+            .account-nav {
+                display: none;
+            }
+
+            .account-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                grid-row: auto;
+            }
+
+            .reminders {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .account-header {
+                min-height: 70px;
+            }
+
+            .account-brand-name {
+                font-size: 25px;
+            }
+
+            .account-brand img {
+                width: 38px;
+                height: 38px;
+            }
+
+            .account-main {
+                width: 92%;
+                padding-top: 35px;
+            }
+
+            .account-welcome {
+                display: block;
+            }
+
+            .account-status {
+                display: inline-flex;
+                margin-top: 20px;
+            }
+
+            .account-card {
+                padding: 21px;
+                border-radius: 19px;
+            }
+
+            .profile-row {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .appointment-info {
+                grid-template-columns: 1fr;
+            }
+
+            .visit-item {
+                grid-template-columns: 1fr auto;
+                gap: 8px 15px;
+            }
+
+            .visit-date {
+                grid-column: 1 / -1;
+            }
+
+            .visit-arrow {
+                grid-column: 2;
+                grid-row: 2;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="account-page">
+
+    <!-- Шапка -->
+    <header class="account-header">
+        <a class="account-brand" href="index.html">
+            <img src="img/логотип.png" alt="MedCare">
+            <span class="account-brand-name">MedCare</span>
+        </a>
+
+        <nav class="account-nav">
+            <a href="index.html">Главная</a>
+            <a href="#profile">Профиль</a>
+            <a href="#appointments">Приёмы</a>
+            <a href="#analyses">Анализы</a>
+        </nav>
+
+        <a href="index.html" class="account-exit">Выйти</a>
+    </header>
+
+    <main class="account-main">
+
+        <!-- Приветствие -->
+        <section class="account-welcome">
+            <div>
+                <div class="account-kicker">Личный кабинет</div>
+                <h1 class="account-title">Здравствуйте, Анна!</h1>
+                <p class="account-subtitle">
+                    Здесь собрана основная информация о вашем здоровье:
+                    ближайшие приёмы, история обращений и результаты анализов.
+                </p>
+            </div>
+
+            <div class="account-status">
+                <span class="account-status-dot"></span>
+                Профиль подтверждён
+            </div>
+        </section>
+
+        <div class="account-grid">
+
+            <!-- Данные пациента -->
+            <section class="account-card profile-card" id="profile">
+                <div class="account-card-header">
+                    <h2>Мои данные</h2>
+                    <a href="#" class="account-link" id="openEdit">Изменить</a>
+                </div>
+
+                <div class="profile-top">
+                    <div class="profile-avatar">А</div>
+                    <div>
+                        <h3 class="profile-name">Анна Петрова</h3>
+                        <div class="profile-role">Пациент MedCare</div>
+                    </div>
+                </div>
+
+                <div class="profile-data">
+                    <div class="profile-row">
+                        <span class="profile-label">Дата рождения</span>
+                        <span class="profile-value">14.08.1998</span>
+                    </div>
+
+                    <div class="profile-row">
+                        <span class="profile-label">Телефон</span>
+                        <span class="profile-value">+7 (900) 123-45-67</span>
+                    </div>
+
+                    <div class="profile-row">
+                        <span class="profile-label">Электронная почта</span>
+                        <span class="profile-value">anna.pet@gmail.com</span>
+                    </div>
+
+                    <div class="profile-row">
+                        <span class="profile-label">Группа крови</span>
+                        <span class="profile-value">A (II) Rh+</span>
+                    </div>
+
+                    <div class="profile-row">
+                        <span class="profile-label">Полис ОМС</span>
+                        <span class="profile-value">0000 0000 0000 0000</span>
+                    </div>
+                </div>
+
+                <button class="edit-profile" id="openEditButton">
+                    Редактировать данные
+                </button>
+            </section>
+
+            <!-- Ближайший приём -->
+            <section class="account-card appointment-card" id="appointments">
+                <div class="account-card-header">
+                    <h2>Ближайший приём</h2>
+                    <span class="appointment-label">Через 3 дня</span>
+                </div>
+
+                <p class="appointment-label">Ваш врач</p>
+                <h3 class="appointment-doctor">Елена Сергеевна Орлова</h3>
+                <div class="appointment-specialty">Терапевт · MedCare Clinic</div>
+
+                <div class="appointment-info">
+                    <div class="appointment-info-item">
+                        <span class="appointment-label">Дата</span>
+                        <strong>7 октября</strong>
+                    </div>
+                    <div class="appointment-info-item">
+                        <span class="appointment-label">Время</span>
+                        <strong>14:30</strong>
+                    </div>
+                </div>
+
+                <a href="#" class="appointment-button" id="cancelAppointment">
+                    Управление записью
+                </a>
+            </section>
+
+            <!-- История болезней -->
+            <section class="account-card">
+                <div class="account-card-header">
+                    <h2>История болезней</h2>
+                    <a href="#" class="account-link">Все записи</a>
+                </div>
+
+                <div class="disease-list">
+                    <div class="disease-item">
+                        <div>
+                            <div class="item-title">ОРВИ</div>
+                            <div class="item-meta">Диагностировано · 12.02.2026</div>
+                        </div>
+                        <span class="disease-status">Завершено</span>
+                    </div>
+
+                    <div class="disease-item">
+                        <div>
+                            <div class="item-title">Аллергический ринит</div>
+                            <div class="item-meta">Наблюдение · 18.04.2026</div>
+                        </div>
+                        <span class="disease-status">Наблюдение</span>
+                    </div>
+
+                    <div class="disease-item">
+                        <div>
+                            <div class="item-title">Дефицит витамина D</div>
+                            <div class="item-meta">Выявлено · 21.06.2026</div>
+                        </div>
+                        <span class="disease-status">Лечение</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Анализы -->
+        <section class="account-card visits-card" id="analyses">
+            <div class="account-card-header">
+                <h2>Последние анализы</h2>
+                <a href="#" class="account-link">Все анализы</a>
+            </div>
+
+            <div class="analysis-list">
+                <div class="analysis-item">
+                    <div>
+                        <div class="item-title">Общий анализ крови</div>
+                        <div class="item-meta">28.09.2026 · Лаборатория MedCare</div>
+                    </div>
+                    <div class="analysis-result">
+                        <strong class="analysis-normal">В норме</strong>
+                        <span>Открыть результат →</span>
+                    </div>
+                </div>
+
+                <div class="analysis-item">
+                    <div>
+                        <div class="item-title">Глюкоза</div>
+                        <div class="item-meta">28.09.2026 · Биохимический анализ</div>
+                    </div>
+                    <div class="analysis-result">
+                        <strong class="analysis-normal">4.8 ммоль/л</strong>
+                        <span>Референс: 3.9–5.5</span>
+                    </div>
+                </div>
+
+                <div class="analysis-item">
+                    <div>
+                        <div class="item-title">Витамин D</div>
+                        <div class="item-meta">28.09.2026 · Биохимический анализ</div>
+                    </div>
+                    <div class="analysis-result">
+                        <strong>32 нг/мл</strong>
+                        <span>Референс: 30–100</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- История приёмов -->
+        <section class="account-card visits-card">
+            <div class="account-card-header">
+                <h2>История приёмов</h2>
+                <a href="#" class="account-link">Вся история</a>
+            </div>
+
+            <div class="visits-list">
+                <div class="visit-item">
+                    <div class="visit-date">28.09.2026</div>
+                    <div>
+                        <div class="visit-doctor">Елена Орлова</div>
+                        <div class="visit-type">Терапевт · Плановый приём</div>
+                    </div>
+                    <div class="visit-arrow">→</div>
+                </div>
+
+                <div class="visit-item">
+                    <div class="visit-date">15.07.2026</div>
+                    <div>
+                        <div class="visit-doctor">Максим Волков</div>
+                        <div class="visit-type">Кардиолог · Консультация</div>
+                    </div>
+                    <div class="visit-arrow">→</div>
+                </div>
+
+                <div class="visit-item">
+                    <div class="visit-date">21.06.2026</div>
+                    <div>
+                        <div class="visit-doctor">Ольга Смирнова</div>
+                        <div class="visit-type">Терапевт · Результаты анализов</div>
+                    </div>
+                    <div class="visit-arrow">→</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Напоминания -->
+        <section class="reminders">
+            <div class="reminder">
+                <h3>Напоминание</h3>
+                <p>
+                    Не забудьте принять назначенный препарат
+                    в соответствии с рекомендациями врача.
+                </p>
+                <div class="reminder-time">Сегодня · 21:00</div>
+            </div>
+
+            <div class="reminder coral">
+                <h3>Следующий шаг</h3>
+                <p>
+                    До следующего приёма осталось 3 дня.
+                    Проверьте документы и результаты анализов перед визитом.
+                </p>
+                <div class="reminder-time">7 октября · 14:30</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="account-footer">
+        © 2026 MedCare · Личный кабинет пациента
+    </footer>
+</div>
+
+<!-- Модальное окно редактирования -->
+<div class="account-modal" id="editModal">
+    <div class="account-modal-box">
+        <button class="modal-close" id="closeModal" aria-label="Закрыть">×</button>
+
+        <h2>Редактирование данных</h2>
+
+        <div class="modal-field">
+            <label for="nameInput">ФИО</label>
+            <input id="nameInput" type="text" value="Анна Петрова">
+        </div>
+
+        <div class="modal-field">
+            <label for="phoneInput">Телефон</label>
+            <input id="phoneInput" type="tel" value="+7 (900) 123-45-67">
+        </div>
+
+        <div class="modal-field">
+            <label for="emailInput">Электронная почта</label>
+            <input id="emailInput" type="email" value="anna.pet@gmail.com">
+        </div>
+
+        <button class="modal-save" id="saveProfile">Сохранить изменения</button>
+    </div>
+</div>
+
+<script>
+    /* =========================================================
+       MedCare — PersonalAccount.js
+       Небольшая интерактивность страницы кабинета.
+       ========================================================= */
+
+    const modal = document.getElementById("editModal");
+    const openEdit = document.getElementById("openEdit");
+    const openEditButton = document.getElementById("openEditButton");
+    const closeModal = document.getElementById("closeModal");
+    const saveProfile = document.getElementById("saveProfile");
+
+    function showModal(event) {
+        if (event) event.preventDefault();
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+    function hideModal() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+
+    openEdit.addEventListener("click", showModal);
+    openEditButton.addEventListener("click", showModal);
+    closeModal.addEventListener("click", hideModal);
+
+    modal.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            hideModal();
+        }
+    });
+
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            hideModal();
+        }
+    });
+
+    saveProfile.addEventListener("click", function() {
+        const newName = document.getElementById("nameInput").value.trim();
+
+        if (newName) {
+            document.querySelector(".profile-name").textContent = newName;
+            document.querySelector(".account-title").textContent =
+                "Здравствуйте, " + newName.split(" ")[0] + "!";
+            document.querySelector(".profile-avatar").textContent =
+                newName.charAt(0).toUpperCase();
+        }
+
+        hideModal();
+
+        saveProfile.textContent = "Сохранено";
+        setTimeout(function() {
+            saveProfile.textContent = "Сохранить изменения";
+        }, 1500);
+    });
+
+    document.getElementById("cancelAppointment").addEventListener("click", function(event) {
+        event.preventDefault();
+
+        alert(
+            "Здесь можно разместить окно управления записью: " +
+            "перенос даты, отмена записи или связь с клиникой."
+        );
+    });
+
+    // Плавная прокрутка к разделам кабинета
+    document.querySelectorAll('.account-nav a[href^="#"]').forEach(function(link) {
+        link.addEventListener("click", function(event) {
+            const target = document.querySelector(this.getAttribute("href"));
+
+            if (target) {
+                event.preventDefault();
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

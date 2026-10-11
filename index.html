@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedCare</title>
+    <link rel="stylesheet" href="style/Styles.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="sans-serif.css">
+    <link rel="stylesheet" type="text/css" media="print" href="serif.css">
+    <link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <style>
+      .container {
+        width: 1430px;
+        height: 815px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #4A7766;
+    }
+    
+    h1 {
+        color: #ECE7E2;
+    }
+    
+    p {
+        color: #ECE7E2;
+    }
+    
+    .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .logo {
+        width: 180px;
+        height: 180px;
+        object-fit: contain;
+        background-image: url(img/логотип.png);
+        background-size: cover; /* Масштабирует изображение, чтобы оно заполнило фон */
+        background-repeat: no-repeat; /* Запрещает повторение изображения */
+    }
+    
+    .heartbeat {
+        position: center;
+        top: 0;
+        left: 0;
+        width: 500px;
+        height: 500px;
+        background-image: url(img/сердце.png);
+        background-size: cover; /* Масштабирует изображение, чтобы оно заполнило фон */
+        background-repeat: no-repeat; /* Запрещает повторение изображения */
+        background-position: center;
+        animation: heartbeat 2s infinite;
+    }
+    
+    @keyframes heartbeat {
+        0% {
+            transform: scale(1);
+            opacity: 2;
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0.7;
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 2;
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+        }
+    }
+    
+    .landing-block {
+        width: 1500px;
+        height: 910px;
+        background-color: #4A7766;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 50px;
+    }
+    
+    .header {
+        width: 1360px;
+        display: flex;
+        padding: 50px;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .header-logo {
+        width: 150px;
+        height: 150px;
+        margin-right: 10px;
+    }
+    
+    .header-logo2 {
+        width: 1130px;
+        height: 155px;
+        position: center;
+    }
+    
+    .header-title {
+        width: 1130px;
+        height: 155px;
+    }
+    
+    @keyframes fill {
+        from {
+            color: transparent;
+        }
+        to {
+            color: #ECE7E2;
+        }
+    }
+    
+    .menu-toggle {
+        position: absolute;
+        cursor: pointer;
+        display: flex;
+        grid-column: span;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 35px;
+        width: 57px;
+        top: 0px;
+        right: 60px;
+        z-index: 1500;
+    }
+    
+    .bar {
+        width: 100%;
+        height: 4px;
+        background-color: #ECE7E2;
+        border-radius: 2px;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+    }
+    
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background-color: #4A7766;
+    }
+    
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background-color: #4A7766;
+    }
+    
+    .content {
+        display: flex;
+        justify-content: space-between;
+        width: 1360px;
+        margin-bottom: 200px;
+    }
+    
+    .content p {
+        margin-bottom: 245px; /* Большой отступ снизу текста */
+    }
+    
+    .text-block {
+        color: #ECE7E2;
+        font-size: 32px;
+        margin-top: 10px;
+    }
+    
+    .image-block {
+        position: relative;
+        width: 776px;
+        height: 490px;
+        overflow: hidden;
+        border-radius: 40px;
+    }
+    
+    .button-block {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .button {
+        display: inline-block;
+        right: 120px;
+        width: 555px;
+        height: 115px;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        color: #fff;
+        background-color: #EC644A;
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .button:hover {
+        background-color: #EC7E68;
+    }
+    
+    .menu-items a {
+        color: #4A7766;
+        font-size: 36px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .menu-items a:hover {
+        color: #EC644A;
+    }
+    
+    .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .menu-items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background-color: #ECE7E2;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+        grid-template-rows: repeat(5, auto); /* 5 строк */
+        gap: 10px; /* Расстояние между элементами */
+        width: 670px;
+        height: 130px;
+        padding: 20px;
+    }
+    
+
+
+      /* Выпадающее меню в один столбец на экранах до 720px */
+      @media (max-width: 720px) {
+          .grid-container {
+              grid-template-columns: 1fr; /* Один столбец */
+          }
+      }
+    
+    .grid-item {
+        background-color: #4A7766; /* Цвет прямоугольников */
+        text-align: center;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+        color: #ECE7E2; /* Цвет текста */
+    }
+    
+    .grid-item-2 {
+        background-color: #ECE7E2; /* Цвет прямоугольников */
+        text-align: center;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+        color: #4A7766; /* Цвет текста */
+    }
+    
+    .grid-item a,
+    .grid-item-2 a {
+        color: inherit; /* Цвет ссылки наследуется от родителя */
+        text-decoration: none;
+    }
+    
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+        grid-template-rows: repeat(5, auto); /* 5 строк */
+        gap: 10px; /* Расстояние между элементами */
+        width: 670px;
+        height: 130px;
+        padding: 20px;
+    }
+    
+    .grid-item {
+        background-color: #4A7766; /* Цвет прямоугольников */
+        text-align: left;
+        padding: 20px;
+        width: 670px;
+        height: 130px;
+        font-size: 18px;
+        color: #ECE7E2;
+    }
+    
+    .grid-item-2 {
+        background-color: #ECE7E2; /* Цвет прямоугольников */
+        text-align: left;
+        padding: 20px;
+        width: 670px;
+        height: 130px;
+        font-size: 18px;
+        color: #4A7766;
+    }
+    </style>
+    </head>
+    
+    <body>
+    <div class="loader">
+    <div class="heartbeat"></div>
+    </div>
+    
+    <div class="landing-block">
+    <div class="header">
+        <img src="img/логотип.png" alt="Логотип" class="header-logo">
+        <h1 class="header-title"><img src="img/MedCare.png" alt="Логотип" class="header-logo2"></h1>
+        <div class="menu-toggle">
+            <div class="bar"></div></br>
+            <div class="bar"></div></br>
+            <div class="bar"></div></br>
+        </div>
+    </div>
+    <div class="content">
+        <div class="text-block">
+            <p style="margin-top: 15px;">Это ваш персональный и личный <br> помощник на пути к здоровью<br>и благополучию.</p>
+            <a href="PersonalAccount_ready.html" class="button" style="display:inline-block; font-family: Source Serif Pro; font-weight: bold; text-align: center; color: #ECE7E2; font-size: 40px; line-height: 85px; text-decoration: none;">Записаться</a>
+        </div>
+        <div class="image-block">
+            <img src="img/мокап.png" alt="Мокап" class="image">
+        </div>
+    </div>
+    </div>
+    
+    <div class="menu-overlay">
+    <div class="menu-items">
+        <div class="grid-container">
+            <!-- Первая колонка -->
+            <div class="grid-item" style="background-color: #ECE7E2 ;"></div>
+            <div class="grid-item-2"></div>
+
+
+            <div class="grid-item">1 <a href="#about">О нас</a></div>
+            <div class="grid-item-2"></div>
+            
+        
+            <div class="grid-item" style="background-color: #ECE7E2 ;color: #4A7766;">2 <a href="#pic">Картинки</a></div>
+            <div class="grid-item-2" style="background-color: #4A7766;color:#ECE7E2;">5 <a href="#rev">Отзывы</a></div>
+            
+            
+            <div class="grid-item">3 <a href="#services">Преимущества</a></div>
+            <div class="grid-item-2" style="background-color: #ECE7E2 ;color: #4A7766;">6 <a href="#log">Регистрация</a></div>
+            <!-- Вторая колонка -->
+            <div class="grid-item" style="background-color: #ECE7E2 ;color: #4A7766;">4 <a href="#map">Расположение</a></div>
+            <div class="grid-item-2" style="background-color: #4A7766;color:#ECE7E2;">7 <a href="#">FAQ</a></div>
+        </div>
+        <div class="el__close-btn"></div>
+    </div>
+    </div>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(function() {
+            document.querySelector('.loader').style.display = 'none';
+        }, 3000); // Задержка в 3 секунды перед скрытием загрузчика
+    
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menuOverlay = document.querySelector('.menu-overlay');
+    
+        menuToggle.addEventListener('click', function() {
+            menuToggle.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        });
+    });
+    </script>
+
+    <section id="about">
+
+    <div class="info" style="background-color: #ECE7E2;">
+        <div class="h1">
+            <h1 style="color: #4A7766">О нас</h1>
+        </div>
+        <div class="p" style="line-height: 37px; text-align: center;">
+            <p style="color: #4A7766"><strong>MedCare</strong> - это ваш личный помощник на пути к здоровью и благополучию.</br></br>
+                Мы предлагаем отслеживание здоровья, напоминания о приеме лекарств. Легкий </br>доступ к медицинской информации: просматривайте историю болезней,</br> результаты анализов и назначения врачей </br>в одном месте. </br></br>
+                Сделайте заботу о своем здоровье проще и удобнее!</p>
+        </div>
+    </div>
+    </section>
+
+    <div id="2" class="pic">
+        <div class="h1">
+            <h1 style="color: #ECE7E2;">MedCare в картинках</h1>
+        </div>
+        <div class="ots"></div>
+
+        <div class="row" id="row1">
+            <img src="img/Пациент.JPG" alt="">
+            <img src="img/IMG_5719.JPG" alt="">
+            <img src="img/IMG_5720.JPG" alt="">
+            <img src="img/IMG_5721.JPG" alt="">
+            <img src="img/IMG_5747.JPG" alt="">
+            <img src="img/IMG_5748.JPG" alt="">
+            <img src="img/IMG_5766.JPG" alt="">
+            <img src="img/IMG_5767.JPG" alt="">
+            <img src="img/IMG_5768.JPG" alt="">
+            <img src="img/IMG_5757.JPG" alt="">
+        </div>
+        <div class="row" id="row2">
+            <img src="img/IMG_5750.JPG" alt="">
+            <img src="img/IMG_5751.JPG" alt="">
+            <img src="img/IMG_5753.JPG" alt="">
+            <img src="img/IMG_5754.JPG" alt="">
+            <img src="img/IMG_5755.JPG" alt="">
+            <img src="img/IMG_5758.JPG" alt="">
+            <img src="img/IMG_5762.JPG" alt="">
+            <img src="img/IMG_5720.JPG" alt="">
+            <img src="img/IMG_5721.JPG" alt="">
+            <img src="img/IMG_5719.JPG" alt="">
+        </div>
+        <div class="row" id="row3">
+            <img src="img/IMG_5757.JPG" alt="">
+            <img src="img/IMG_5759.JPG" alt="">
+            <img src="img/IMG_5760.JPG" alt="">
+            <img src="img/IMG_5761.JPG" alt="">
+            <img src="img/IMG_5762.JPG" alt="">
+            <img src="img/IMG_5765.JPG" alt="">
+            <img src="img/Пациент.JPG" alt="">
+            <img src="img/IMG_5719.JPG" alt="">
+            <img src="img/IMG_5720.JPG" alt="">
+            <img src="img/IMG_5721.JPG" alt="">
+            <img src="img/IMG_5747.JPG" alt="">
+            <img src="img/IMG_5748.JPG" alt="">
+        </div>
+    </div>
+
+    <div class="ots"></div>
+    <div id="3" class="h1">
+        <h1 style="color: #4A7766;">Преимущества</h1>
+    </div>
+    <div class="cont s--inactive">
+        <div class="cont__inner">
+            <div class="el">
+                <div class="el__overflow">
+                    <div class="el__inner">
+                        <div class="el__bg"></div>
+                        <div class="el__preview-cont">
+                            <h2 class="el__heading">Доступность и удобство</h2>
+                        </div>
+                        <div class="el__content">
+                            <div class="el__text">
+                                    - Запись на прием в пару кликов: Легко и быстро записывайтесь на прием к врачу, не выходя из дома.</br>
+                                    - Круглосуточная поддержка: Получайте медицинскую помощь и консультации в любое время суток.
+                            </div>
+                            <img src="img/full_u3u4w5ZU.jpg" width="210px" height="210px" style="border-radius: 100px;ptext-align: center;">
+                            <div class="el__close-btn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="el__index">
+                    <div class="el__index-back">1</div>
+                    <div class="el__index-front">
+                        <div class="el__index-overlay" data-index="1">1</div>
+                    </div>
+                </div>
+            </div>
+            <div class="el">
+                <div class="el__overflow">
+                    <div class="el__inner">
+                        <div class="el__bg"></div>
+                        <div class="el__preview-cont">
+                            <h2 class="el__heading">Широкий выбор специалистов</h2>
+                        </div>
+                        <div class="el__content">
+                            <div class="el__text">
+                                - Более 1000 квалифицированных специалистов: Выбирайте врача по специальности, опыту и отзывам пациентов.</br>
+                                - Онлайн-консультации: Общайтесь с врачами из любой точки мира через видеозвонки.
+                            </div>
+                            <img src="img/full_u3u4w5ZU.jpg" width="210px" height="210px" style="border-radius: 100px;text-align: center;">
+                            <div class="el__close-btn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="el__index">
+                    <div class="el__index-back">2</div>
+                    <div class="el__index-front">
+                        <div class="el__index-overlay" data-index="2">2</div>
+                    </div>
+                </div>
+            </div>
+            <div class="el">
+                <div class="el__overflow">
+                    <div class="el__inner">
+                        <div class="el__bg"></div>
+                        <div class="el__preview-cont">
+                            <h2 class="el__heading">Безопасность и конфиденциальность</h2>
+                        </div>
+                        <div class="el__content">
+                            <div class="el__text">
+                                - Ваши данные в безопасности: Мы гарантируем конфиденциальность и защиту ваших медицинских данных.</br>
+                                - Соответствие международным стандартам: Наше приложение соответствует всем требованиям безопасности и конфиденциальности.
+                            </div>
+                            <img src="img/full_u3u4w5ZU.jpg" width="210px" height="210px" style="border-radius: 100px;text-align: center;">
+                            <div class="el__close-btn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="el__index">
+                    <div class="el__index-back">3</div>
+                    <div class="el__index-front">
+                        <div class="el__index-overlay" data-index="3">3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="el">
+                <div class="el__overflow">
+                    <div class="el__inner">
+                        <div class="el__bg"></div>
+                        <div class="el__preview-cont">
+                            <h2 class="el__heading">Прозрачные цены на услуги</h2>
+                        </div>
+                        <div class="el__content">
+                            <div class="el__text">
+                                - Запись на прием в пару кликов: Легко и быстро записывайтесь на прием к врачу, не выходя из дома.</br>
+                                - Круглосуточная поддержка: Получайте медицинскую помощь и консультации в любое время суток.
+                            </div>
+                            <img src="img/full_u3u4w5ZU.jpg" width="210px" height="210px" style="border-radius: 100px;text-align: center;">
+                            <div class="el__close-btn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="el__index">
+                    <div class="el__index-back">4</div>
+                    <div class="el__index-front">
+                        <div class="el__index-overlay" data-index="4">4</div>
+                    </div>
+                </div>
+            </div>
+            <div class="el">
+                <div class="el__overflow">
+                    <div class="el__inner">
+                        <div class="el__bg"></div>
+                        <div class="el__preview-cont">
+                            <h2 class="el__heading">Широкая сеть партнеров</h2>
+                        </div>
+                        <div class="el__content">
+                            <div class="el__text">
+                                - Более 100 клиник и медицинских центров: Мы сотрудничаем с лучшими клиниками и центрами, чтобы предложить вам широкий выбор услуг.</br>
+                                - Партнерские программы и акции: Пользуйтесь специальными предложениями от наших партнеров и получайте дополнительные бонусы.
+                            </div>
+                            <img src="img/full_u3u4w5ZU.jpg" width="210px" height="210px" style="border-radius: 100px; text-align: center;">
+                            <div class="el__close-btn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="el__index">
+                    <div class="el__index-back">5</div>
+                    <div class="el__index-front">
+                        <div class="el__index-overlay" data-index="5">5</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="4" class="map">
+        <div class="h1">
+            <h1 style="color: #ECE7E2;">Расположение</h1>
+        </div>
+        <div class="ots"></div>
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Af17b1d8f3e3aa2df2ec47f4189790b3b683e4dffa0c84cbcbd6684c09dd087f9&amp;width=100%25&amp;height=538&amp;lang=ru_RU&amp;scroll=true"></script>
+
+        <div class="container">
+            <div class="col-xs-12 marquee"><p class="lead" style="font-family: Manrope;text-align: center;color: #4A7766;">
+                Клиника «La Vie Clinic» Клиника «Атрибьют» Медцентр «Ситилаб» Клиника «Источник» Клиника «La Vie Clinic»</p>
+            </div>
+            <div class="col-xs-12 marquee"><p class="lead" style="font-family: Manrope;text-align: center;color: #4A7766;">
+                Медцентр «Гайде» Клиника «Медика» Клиника «НоваВита» Медцентр «Династия» Клиника «Схема лечения»</p>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <div id="5" class="slideshow-container">
+        <div class="h1">
+            <h1 style="color: #4A7766">Отзывы</h1>
+        </div>
+        <div class="mySlides">
+            <div class="p">
+                <q>MedCare превратил мои отношения с медициной в настоящий праздник! Я всегда боялась звонить в поликлиники и записываться на прием, но теперь все намного проще.</br></br>
+                    С помощью этого приложения я могу записаться к кардиологу или педиатру всего в пару кликов, не выходя из дома. Круглосуточная поддержка и доступ к моей медицинской истории дают мне уверенность в том, что я получаю качественную помощь в любое время.</br>
+                    MedCare - это не просто приложение, это настоящий друг для всей семьи!</q>
+            </div>
+            <div class="ots" style="height: 33px;"></div>
+            <img src="/Users/arinazotkina/Desktop/веб-дизигн/Site_Зотова А.Д и Идрисова К.Р./img/2.jpeg" width="210px" height="210px" style="border-radius: 100px;">
+            <div class="ots" style="height: 33px;"></div>
+            <div class="p">
+                <p style="color: #4A7766">Демченко Виктория Александровнa</p>
+            </div>
+        </div>
+
+        <div class="mySlides">
+        <div class="p">
+            <q>MedCare превратил мои походы к врачу в комфортное и быстрое мероприятие. Я могу записаться к любому специалисту онлайн,</br> а доступ к моей медицинской истории помогает врачам лучше понимать мое состояние. </br>Это приложение — просто незаменимо!
+            </q>
+        </div>
+        <div class="ots" style="height: 33px;"></div>
+        <img src="/Users/arinazotkina/Desktop/веб-дизигн/Site_Зотова А.Д и Идрисова К.Р./img/2.jpeg" width="210px" height="210px" style="border-radius: 100px;">
+        <div class="ots" style="height: 33px;"></div>
+        <div class="p">
+            <p style="color: #4A7766">Петров Алексей Владимирович
+            </p>
+        </div>
+      </div>
+      
+      <div class="mySlides">
+      <div class="p">
+          <q>MedCare сделал мои взаимодействия с медициной простыми и удобными. Я могу легко записываться на приемы, а доступ к медицинской истории </br> помогает мне и моим врачам быть в курсе моего здоровья. </br> Это приложение — просто находка для всей семьи!
+            </q>
+      </div>
+      <div class="ots" style="height: 33px;"></div>
+      <img src="/Users/arinazotkina/Desktop/веб-дизигн/Site_Зотова А.Д и Идрисова К.Р./img/2.jpeg" width="210px" height="210px" style="border-radius: 100px;">
+      <div class="ots" style="height: 33px;"></div>
+      <div class="p">
+          <p style="color: #4A7766">Кузнецов Дмитрий Игоревич
+          </p>
+      </div>
+    </div>
+
+        <div class="mySlides">
+          <div class="p">
+              <q>MedCare сделал мою жизнь намного проще! Теперь я могу легко записываться на приемы, не тратя время на телефонные звонки. </br> Особенно ценю доступ к медицинской истории и круглосуточную поддержку. Это приложение — настоящий спаситель </br> для меня и моей семьи!</q>
+          </div>
+          <div class="ots" style="height: 33px;"></div>
+          <img src="/Users/arinazotkina/Desktop/веб-дизигн/Site_Зотова А.Д и Идрисова К.Р./img/5.jpeg" width="210px" height="210px" style="border-radius: 100px;">
+          <div class="ots" style="height: 33px;"></div>
+          <div class="p">
+              <p style="color: #4A7766">Иванова Анна Сергеевна</p>
+          </div>
+      </div>
+
+        <div class="mySlides">
+          <div class="p">
+              <q>С MedCare я перестала бояться посещать врачей. Теперь я могу записаться на прием в любое время, а круглосуточная поддержка </br> дает мне уверенность в том, что я получаю качественную помощь. </br> Это приложение — настоящий прорыв в медицинском обслуживании!
+                 
+                </q>
+          </div>
+          <div class="ots" style="height: 33px;"></div>
+          <img src="/Users/arinazotkina/Desktop/веб-дизигн/Site_Зотова А.Д и Идрисова К.Р./img/5.jpeg" width="210px" height="210px" style="border-radius: 100px;">
+          <div class="ots" style="height: 33px;"></div>
+          <div class="p">
+              <p style="color: #4A7766">Сидорова Елена Николаевна
+              </p>
+          </div>
+    </div>
+    
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+
+    <div id="6" class="reg">
+
+      <div class="ots"></div>
+          <div class="h1">
+              <h1 style="color: #ECE7E2;">Регистрация</h1>
+          </div>
+
+          <div class="ots"></div>
+          <form action="action_page.php">
+            <div class="containe">
+                <input type="text" placeholder="Введите ФИО" name="uname" required style="font-size: 24px; color: #737373;background-color: #ECE7E2;font-family: Manrope;border-radius: 20px;"></br>
+                <div class="ots" style="height: 22px;"></div>
+                <input type="telefon" placeholder="Введите номер телефона" name="psw" required style="font-size: 24px; color: #737373;background-color: #ECE7E2;font-family: Manrope;border-radius: 20px;">
+                <div class="ots" style="height: 22px;"></div>
+                <button class="button" style="font-family: Manrope; font-weight: bold; text-align: center; color: #ECE7E2; font-size: 24px;width: 500px;">Записаться</button>
+                
+            </div>
+        </form>
+
+    </div>
+    
+
+    <div class="ots"></div>
+    <div id="7" class="faq-container">
+    <div class="h1">
+        <h1 style="color: #4A7766">Часто задаваемые вопросы</h1>
+    </div>
+    
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>
+                    <div class="p">Что такое MedCare?</div>
+                </span>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="p">
+                    <p style="text-align:left">MedCare — это удобное веб-приложение для онлайн-записи к врачам и управления медицинскими услугами. Оно помогает пациентам быстро и легко находить подходящих специалистов и записываться на консультации.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>
+                    <div class="p">Какие услуги предоставляете?</div>
+                </span>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="p">
+                    <p style="text-align:left">Мы предлагаем онлайн-запись к врачам разных специальностей, возможность просмотра расписания, а также доступ к персонализированной медицинской информации и напоминаниям о приемах.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>
+                    <div class="p">Какие преимущества у MedCare?</div>
+                </span>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="p">
+                    <p style="text-align:left">MedCare предлагает удобный интерфейс, быструю запись на прием, а также возможность выбора врача по рейтингу и отзывам. Мы заботимся о вашем времени и комфорте.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>
+                    <div class="p">Забыл пароль. Что делать?</div>
+                </span>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="p">
+                    <p style="text-align:left">Нажмите на кнопку "Забыли пароль" на странице входа, введите ваш email, и мы вышлем вам инструкцию по восстановлению доступа.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>
+                    <div class="p">Как записаться на консультацию?</div>
+                </span>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="p">
+                    <p style="text-align:left">Просто выберите нужного врача, удобное время и заполните форму записи. Подтверждение придет вам на email или в приложение.</p>
+                </div>
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>
+                    <div class="p">Есть ли бесплатные консультации?</div>
+                </span>
+                <button class="faq-toggle">+</button>
+            </div>
+            <div class="faq-answer">
+                <div class="p">
+                    <p style="text-align:left">Да, у нас есть возможность бесплатных консультаций с некоторыми специалистами. Проверьте раздел "Услуги" для получения подробной информации.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="f">
+        <img src="/Users/arinazotkina/Desktop/веб-дизигн/Site_Зотова А.Д и Идрисова К.Р./img/0.png" style="height: 260px;">
+    </div>
+    
+    <script>
+      // JavaScript для обработки переходов
+      document.addEventListener('DOMContentLoaded', function () {
+        const links = document.querySelectorAll('nav a');
+        links.forEach(link => {
+          link.addEventListener('click', function (e) {
+            e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+            const targetId = this.getAttribute('href').substring(1); // Получаем id раздела
+            showSection(targetId);
+          });
+        });
+  
+        // Функция для отображения нужного раздела
+        function showSection(id) {
+          const sections = document.querySelectorAll('.section');
+          sections.forEach(section => {
+            section.classList.remove('active'); // Скрываем все разделы
+          });
+          document.getElementById(id).classList.add('active'); // Показываем нужный раздел
+        }
+  
+        // Показываем раздел, соответствующий текущему URL
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+          showSection(hash);
+        }
+      });
+    </script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="style/script.js"></script>
+</body>
+</html>
+
+
+
+
