@@ -805,34 +805,7 @@
         <img src="img/0.jpg" style="height: 260px;">
     </div>
     
-    <script>
-      // JavaScript для обработки переходов
-      document.addEventListener('DOMContentLoaded', function () {
-        const links = document.querySelectorAll('nav a');
-        links.forEach(link => {
-          link.addEventListener('click', function (e) {
-            e.preventDefault(); // Предотвращаем стандартное поведение ссылки
-            const targetId = this.getAttribute('href').substring(1); // Получаем id раздела
-            showSection(targetId);
-          });
-        });
-  
-        // Функция для отображения нужного раздела
-        function showSection(id) {
-          const sections = document.querySelectorAll('.section');
-          sections.forEach(section => {
-            section.classList.remove('active'); // Скрываем все разделы
-          });
-          document.getElementById(id).classList.add('active'); // Показываем нужный раздел
-        }
-  
-        // Показываем раздел, соответствующий текущему URL
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-          showSection(hash);
-        }
-      });
-    </script>
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="style/script.js"></script>
 </body>
