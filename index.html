@@ -337,7 +337,71 @@
         color: #4A7766;
     }
     </style>
-    </head>
+
+<style>
+  .feedback-section {
+    padding: 60px 20px;
+    background: #ECE7E2;
+    color: #333;
+  }
+
+  .feedback-container {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .feedback-container h2 {
+    color: #4A7766;
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .feedback-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .feedback-container input,
+  .feedback-container textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    font: inherit;
+  }
+
+  .feedback-container textarea {
+    resize: vertical;
+  }
+
+  .feedback-container button {
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #4A7766;
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .feedback-container button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+
+  #feedback-status {
+    min-height: 24px;
+    margin: 4px 0 0;
+  }
+</style>
+    
+
+</head>
     
     <body>
     <div class="loader">
@@ -808,6 +872,80 @@
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="style/script.js"></script>
+
+
+<section id="feedback" class="feedback-section">
+  <div class="feedback-container">
+    <h2>Обратная связь</h2>
+    <p>Остались вопросы? Напишите нам!</p>
+
+    <form id="feedback-form">
+      <label for="user_email">Ваш email</label>
+      <input
+        type="email"
+        id="user_email"
+        name="user_email"
+        placeholder="example@mail.ru"
+        required
+      />
+
+      <label for="message">Ваше сообщение</label>
+      <textarea
+        id="message"
+        name="message"
+        placeholder="Введите сообщение..."
+        rows="5"
+        required
+      ></textarea>
+
+      <button type="submit" id="feedback-submit">
+        Отправить сообщение
+      </button>
+
+      <p id="feedback-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+        
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  emailjs.init({
+    publicKey: "ZQzz9iKR8oascfI7o"
+  });
+
+  const feedbackForm = document.getElementById("feedback-form");
+  const feedbackStatus = document.getElementById("feedback-status");
+  const feedbackButton = document.getElementById("feedback-submit");
+
+  feedbackForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    feedbackButton.disabled = true;
+    feedbackStatus.textContent = "Отправляем сообщение...";
+
+    try {
+      await emailjs.sendForm(
+        "service_medcare",
+        "template_drnvq1b",
+        feedbackForm
+      );
+
+      feedbackStatus.textContent = "Сообщение успешно отправлено!";
+      feedbackForm.reset();
+    } catch (error) {
+      console.error("Ошибка отправки:", error);
+      feedbackStatus.textContent =
+        "Не удалось отправить сообщение. Попробуйте ещё раз.";
+    } finally {
+      feedbackButton.disabled = false;
+    }
+  });
+</script>
+
+        
+
 </body>
 </html>
 
