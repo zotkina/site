@@ -758,26 +758,77 @@
     </div>
 
 
-    <div id="6" class="reg">
 
-      <div class="ots"></div>
-          <div class="h1">
-              <h1 style="color: #ECE7E2;">Регистрация</h1>
-          </div>
+<div id="6" class="reg">
+    <div class="ots"></div>
 
-          <div class="ots"></div>
-          <form action="action_page.php">
-            <div class="containe">
-                <input type="text" placeholder="Введите ФИО" name="uname" required style="font-size: 24px; color: #737373;background-color: #ECE7E2;font-family: Manrope;border-radius: 20px;"></br>
-                <div class="ots" style="height: 22px;"></div>
-                <input type="telefon" placeholder="Введите номер телефона" name="psw" required style="font-size: 24px; color: #737373;background-color: #ECE7E2;font-family: Manrope;border-radius: 20px;">
-                <div class="ots" style="height: 22px;"></div>
-                <button class="button" style="font-family: Manrope; font-weight: bold; text-align: center; color: #ECE7E2; font-size: 24px;width: 500px;">Записаться</button>
-                
-            </div>
-        </form>
-
+    <div class="h1">
+        <h1 style="color: #ECE7E2;">Регистрация</h1>
     </div>
+
+    <div class="ots"></div>
+
+    <form id="registration-form">
+        <div class="containe">
+
+            <input
+                type="text"
+                name="full_name"
+                placeholder="Введите ФИО"
+                autocomplete="name"
+                required
+                style="font-size: 24px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;"
+            >
+
+            <div class="ots" style="height: 22px;"></div>
+
+            <input
+                type="tel"
+                name="phone"
+                placeholder="Введите номер телефона"
+                autocomplete="tel"
+                required
+                style="font-size: 24px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;"
+            >
+
+            <div class="ots" style="height: 22px;"></div>
+
+            <input
+                type="email"
+                name="user_email"
+                placeholder="Введите email"
+                autocomplete="email"
+                required
+                style="font-size: 24px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;"
+            >
+
+            <div class="ots" style="height: 22px;"></div>
+
+            <textarea
+                name="message"
+                placeholder="Напишите сообщение или укажите удобное время для записи"
+                rows="4"
+                required
+                style="box-sizing: border-box; width: 100%; max-width: 500px; padding: 14px; font-size: 20px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;"
+            ></textarea>
+
+            <div class="ots" style="height: 22px;"></div>
+
+            <button
+                type="submit"
+                id="registration-submit"
+                class="button"
+                style="font-family: Manrope; font-weight: bold; text-align: center; color: #ECE7E2; font-size: 24px; width: 500px; height: auto; min-height: 70px;"
+            >
+                Отправить заявку
+            </button>
+
+            <p id="registration-status" role="status" aria-live="polite"></p>
+
+        </div>
+    </form>
+</div>
+
     
 
     <div class="ots"></div>
