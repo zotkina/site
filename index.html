@@ -47,7 +47,7 @@
         width: 180px;
         height: 180px;
         object-fit: contain;
-        background-image: url(img/логотип.png);
+        background-image: url(логотип.png);
         background-size: cover; /* Масштабирует изображение, чтобы оно заполнило фон */
         background-repeat: no-repeat; /* Запрещает повторение изображения */
     }
@@ -338,70 +338,17 @@
     }
     </style>
 
-<style>
-  .feedback-section {
-    padding: 60px 20px;
-    background: #ECE7E2;
-    color: #333;
-  }
-
-  .feedback-container {
-    max-width: 650px;
-    margin: 0 auto;
-  }
-
-  .feedback-container h2 {
-    color: #4A7766;
-    font-size: 32px;
-    margin-bottom: 12px;
-  }
-
-  .feedback-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 24px;
-  }
-
-  .feedback-container input,
-  .feedback-container textarea {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #fff;
-    font: inherit;
-  }
-
-  .feedback-container textarea {
-    resize: vertical;
-  }
-
-  .feedback-container button {
-    padding: 14px 20px;
-    border: none;
-    border-radius: 8px;
-    background: #4A7766;
-    color: white;
-    font: inherit;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  .feedback-container button:disabled {
-    opacity: 0.6;
-    cursor: wait;
-  }
-
-  #feedback-status {
-    min-height: 24px;
-    margin: 4px 0 0;
-  }
-</style>
-    
-
-</head>
+    <style>
+      #registration-form .containe { display: flex; flex-direction: column; align-items: center; gap: 0; }
+      #registration-form input, #registration-form textarea { box-sizing: border-box; width: 500px; max-width: 100%; padding: 14px 18px; }
+      #registration-form textarea { min-height: 120px; resize: vertical; }
+      #registration-submit:disabled { opacity: .65; cursor: wait; }
+      #registration-status { min-height: 24px; text-align: center; }
+      @media (max-width: 600px) {
+        #registration-form input, #registration-form textarea, #registration-submit { width: 100% !important; font-size: 18px !important; }
+      }
+    </style>
+    </head>
     
     <body>
     <div class="loader">
@@ -421,7 +368,7 @@
     <div class="content">
         <div class="text-block">
             <p style="margin-top: 15px;">Это ваш персональный и личный <br> помощник на пути к здоровью<br>и благополучию.</p>
-            <a href="PersonalAccount_ready.html" class="button" style="display:inline-block; font-family: Source Serif Pro; font-weight: bold; text-align: center; color: #ECE7E2; font-size: 40px; line-height: 85px; text-decoration: none;">Записаться</a>
+            <button type="button" class="button" onclick="document.getElementById('log').scrollIntoView({behavior: 'smooth'});" style="font-family: Source Serif Pro; font-weight: bold; text-align: center; color: #ECE7E2; font-size: 40px;">Записаться</button>
         </div>
         <div class="image-block">
             <img src="img/мокап.png" alt="Мокап" class="image">
@@ -449,7 +396,7 @@
             <div class="grid-item-2" style="background-color: #ECE7E2 ;color: #4A7766;">6 <a href="#log">Регистрация</a></div>
             <!-- Вторая колонка -->
             <div class="grid-item" style="background-color: #ECE7E2 ;color: #4A7766;">4 <a href="#map">Расположение</a></div>
-            <div class="grid-item-2" style="background-color: #4A7766;color:#ECE7E2;">7 <a href="#">FAQ</a></div>
+            <div class="grid-item-2" style="background-color: #4A7766;color:#ECE7E2;">7 <a href="#7">FAQ</a></div>
         </div>
         <div class="el__close-btn"></div>
     </div>
@@ -691,7 +638,7 @@
                     MedCare - это не просто приложение, это настоящий друг для всей семьи!</q>
             </div>
             <div class="ots" style="height: 33px;"></div>
-            <img src="img/q.jpeg" width="210px" height="210px" style="border-radius: 100px;">
+            <img src="img/2.jpeg" width="210px" height="210px" style="border-radius: 100px;">
             <div class="ots" style="height: 33px;"></div>
             <div class="p">
                 <p style="color: #4A7766">Демченко Виктория Александровнa</p>
@@ -700,28 +647,28 @@
 
         <div class="mySlides">
         <div class="p">
-            <q>MedCare превратил мои походы к врачу в комфортное и быстрое мероприятие. Я могу записаться к любому специалисту онлайн,</br> а доступ к моей медицинской истории помогает врачам лучше понимать мое состояние. </br>Это приложение — просто незаменимо!
+            <q>MedCare превратил мои походы к врачу в комфортное и быстрое мероприятие. Я могу записаться к любому специалисту онлайн,</br> а доступ к моей медицинской истории помогает врачам лучше понимать мое состояние. </br>Это приложение — просто незаменимо!  
             </q>
         </div>
         <div class="ots" style="height: 33px;"></div>
-        <img src="img/2.jpg" width="210px" height="210px" style="border-radius: 100px;">
+        <img src="img/2.jpeg" width="210px" height="210px" style="border-radius: 100px;">
         <div class="ots" style="height: 33px;"></div>
         <div class="p">
-            <p style="color: #4A7766">Петров Алексей Владимирович
+            <p style="color: #4A7766">Петров Алексей Владимирович  
             </p>
         </div>
       </div>
       
       <div class="mySlides">
       <div class="p">
-          <q>MedCare сделал мои взаимодействия с медициной простыми и удобными. Я могу легко записываться на приемы, а доступ к медицинской истории </br> помогает мне и моим врачам быть в курсе моего здоровья. </br> Это приложение — просто находка для всей семьи!
+          <q>MedCare сделал мои взаимодействия с медициной простыми и удобными. Я могу легко записываться на приемы, а доступ к медицинской истории </br> помогает мне и моим врачам быть в курсе моего здоровья. </br> Это приложение — просто находка для всей семьи!  
             </q>
       </div>
       <div class="ots" style="height: 33px;"></div>
-      <img src="img/3.jpg" width="210px" height="210px" style="border-radius: 100px;">
+      <img src="img/2.jpeg" width="210px" height="210px" style="border-radius: 100px;">
       <div class="ots" style="height: 33px;"></div>
       <div class="p">
-          <p style="color: #4A7766">Кузнецов Дмитрий Игоревич
+          <p style="color: #4A7766">Кузнецов Дмитрий Игоревич 
           </p>
       </div>
     </div>
@@ -731,7 +678,7 @@
               <q>MedCare сделал мою жизнь намного проще! Теперь я могу легко записываться на приемы, не тратя время на телефонные звонки. </br> Особенно ценю доступ к медицинской истории и круглосуточную поддержку. Это приложение — настоящий спаситель </br> для меня и моей семьи!</q>
           </div>
           <div class="ots" style="height: 33px;"></div>
-          <img src="img/5.jpg" width="210px" height="210px" style="border-radius: 100px;">
+          <img src="img/5.jpeg" width="210px" height="210px" style="border-radius: 100px;">
           <div class="ots" style="height: 33px;"></div>
           <div class="p">
               <p style="color: #4A7766">Иванова Анна Сергеевна</p>
@@ -740,15 +687,15 @@
 
         <div class="mySlides">
           <div class="p">
-              <q>С MedCare я перестала бояться посещать врачей. Теперь я могу записаться на прием в любое время, а круглосуточная поддержка </br> дает мне уверенность в том, что я получаю качественную помощь. </br> Это приложение — настоящий прорыв в медицинском обслуживании!
+              <q>С MedCare я перестала бояться посещать врачей. Теперь я могу записаться на прием в любое время, а круглосуточная поддержка </br> дает мне уверенность в том, что я получаю качественную помощь. </br> Это приложение — настоящий прорыв в медицинском обслуживании!  
                  
                 </q>
           </div>
           <div class="ots" style="height: 33px;"></div>
-          <img src="img/5.jpg" width="210px" height="210px" style="border-radius: 100px;">
+          <img src="img/5.jpeg" width="210px" height="210px" style="border-radius: 100px;">
           <div class="ots" style="height: 33px;"></div>
           <div class="p">
-              <p style="color: #4A7766">Сидорова Елена Николаевна
+              <p style="color: #4A7766">Сидорова Елена Николаевна  
               </p>
           </div>
     </div>
@@ -758,78 +705,32 @@
     </div>
 
 
-
-<div id="6" class="reg">
-    <div class="ots"></div>
-
-    <div class="h1">
-        <h1 style="color: #ECE7E2;">Регистрация</h1>
-    </div>
-
-    <div class="ots"></div>
-
-    <form id="registration-form">
-        <div class="containe">
-
-            <input
-                type="text"
-                name="full_name"
-                placeholder="Введите ФИО"
-                autocomplete="name"
-                required
-                style="font-size: 24px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;"
-            >
-
-            <div class="ots" style="height: 22px;"></div>
-
-            <input
-                type="tel"
-                name="phone"
-                placeholder="Введите номер телефона"
-                autocomplete="tel"
-                required
-                style="font-size: 24px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;"
-            >
-
-            <div class="ots" style="height: 22px;"></div>
-
-            <input
-                type="email"
-                name="user_email"
-                placeholder="Введите email"
-                autocomplete="email"
-                required
-                style="font-size: 24px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;"
-            >
-
-            <div class="ots" style="height: 22px;"></div>
-
-            <textarea
-                name="message"
-                placeholder="Напишите сообщение или укажите удобное время для записи"
-                rows="4"
-                required
-                style="box-sizing: border-box; width: 100%; max-width: 500px; padding: 14px; font-size: 20px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;"
-            ></textarea>
-
-            <div class="ots" style="height: 22px;"></div>
-
-            <button
-                type="submit"
-                id="registration-submit"
-                class="button"
-                style="font-family: Manrope; font-weight: bold; text-align: center; color: #ECE7E2; font-size: 24px; width: 500px; height: auto; min-height: 70px;"
-            >
-                Отправить заявку
-            </button>
-
-            <p id="registration-status" role="status" aria-live="polite"></p>
-
+    <div id="log" class="reg">
+        <div class="ots"></div>
+        <div class="h1">
+            <h1 style="color: #ECE7E2;">Запись на консультацию</h1>
         </div>
-    </form>
-</div>
+        <div class="ots"></div>
 
-    
+        <form id="registration-form">
+            <div class="containe">
+                <input type="text" name="full_name" placeholder="Введите ФИО" autocomplete="name" required style="font-size: 24px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;">
+                <div class="ots" style="height: 22px;"></div>
+
+                <input type="tel" name="phone" placeholder="Введите номер телефона" autocomplete="tel" required style="font-size: 24px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;">
+                <div class="ots" style="height: 22px;"></div>
+
+                <input type="email" name="user_email" placeholder="Введите email" autocomplete="email" required style="font-size: 24px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;">
+                <div class="ots" style="height: 22px;"></div>
+
+                <textarea name="message" placeholder="Напишите сообщение или укажите удобное время для записи" rows="4" required style="box-sizing: border-box; width: 100%; max-width: 500px; padding: 14px; font-size: 20px; color: #737373; background-color: #ECE7E2; font-family: Manrope; border-radius: 20px;"></textarea>
+                <div class="ots" style="height: 22px;"></div>
+
+                <button type="submit" id="registration-submit" class="button" style="font-family: Manrope; font-weight: bold; text-align: center; color: #ECE7E2; font-size: 24px; width: 500px; max-width: 100%; height: auto; min-height: 70px;">Отправить заявку</button>
+                <p id="registration-status" role="status" aria-live="polite" style="margin-top: 15px; color: #ECE7E2;"></p>
+            </div>
+        </form>
+    </div>
 
     <div class="ots"></div>
     <div id="7" class="faq-container">
@@ -916,91 +817,41 @@
             </div>
         </div>
     </div>
-<section id="feedback" class="feedback-section">
-  <div class="feedback-container">
-    <h2>Обратная связь</h2>
-    <p>Остались вопросы? Напишите нам!</p>
-
-    <form id="feedback-form">
-      <label for="user_email">Ваш email</label>
-      <input
-        type="email"
-        id="user_email"
-        name="user_email"
-        placeholder="example@mail.ru"
-        required
-      />
-
-      <label for="message">Ваше сообщение</label>
-      <textarea
-        id="message"
-        name="message"
-        placeholder="Введите сообщение..."
-        rows="5"
-        required
-      ></textarea>
-
-      <button type="submit" id="feedback-submit">
-        Отправить сообщение
-      </button>
-
-      <p id="feedback-status" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
-        
     <div class="f">
-        <img src="img/0.jpg" style="height: 260px;">
+        <img src="img/0.png" style="height: 260px;">
     </div>
     
-
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="style/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Настройка EmailJS для отправки заявок на почту.
+        emailjs.init({ publicKey: "ZQzz9iKR8oascfI7o" });
 
+        const registrationForm = document.getElementById("registration-form");
+        const registrationStatus = document.getElementById("registration-status");
+        const registrationButton = document.getElementById("registration-submit");
 
+        if (registrationForm) {
+          registrationForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+            registrationButton.disabled = true;
+            registrationStatus.textContent = "Отправляем заявку...";
 
-        
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
-<script>
-  emailjs.init({
-    publicKey: "ZQzz9iKR8oascfI7o"
-  });
-
-  const feedbackForm = document.getElementById("feedback-form");
-  const feedbackStatus = document.getElementById("feedback-status");
-  const feedbackButton = document.getElementById("feedback-submit");
-
-  feedbackForm.addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    feedbackButton.disabled = true;
-    feedbackStatus.textContent = "Отправляем сообщение...";
-
-    try {
-      await emailjs.sendForm(
-        "service_medcare",
-        "template_drnvq1b",
-        feedbackForm
-      );
-
-      feedbackStatus.textContent = "Сообщение успешно отправлено!";
-      feedbackForm.reset();
-    } catch (error) {
-      console.error("Ошибка отправки:", error);
-      feedbackStatus.textContent =
-        "Не удалось отправить сообщение. Попробуйте ещё раз.";
-    } finally {
-      feedbackButton.disabled = false;
-    }
-  });
-</script>
-
-        
-
+            try {
+              await emailjs.sendForm("service_medcare", "template_drnvq1b", registrationForm);
+              registrationStatus.textContent = "Заявка успешно отправлена! Спасибо.";
+              registrationForm.reset();
+            } catch (error) {
+              console.error("Ошибка отправки заявки:", error);
+              registrationStatus.textContent = "Не удалось отправить заявку. Попробуйте ещё раз.";
+            } finally {
+              registrationButton.disabled = false;
+            }
+          });
+        }
+      });
+    </script>
 </body>
 </html>
-
-
-
-
